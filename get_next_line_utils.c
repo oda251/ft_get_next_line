@@ -1,45 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 18:54:07 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/24 19:58:54 by yoda             ###   ########.fr       */
+/*   Created: 2023/09/24 19:04:31 by yoda              #+#    #+#             */
+/*   Updated: 2023/09/24 19:59:13 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*str_push_back(char *str, char c, size_t len);
-
-char	*get_next_line(int fd)
+char	*str_push_back(char *str, char c, size_t len)
 {
 	char	*dest;
-	char	*buf;
-	size_t	len;
-	int		r;
+	size_t	i;
 
-	dest = ft_calloc(1, 1);
+	dest = malloc(len + 2);
 	if (!dest)
-		return (NULL);
-	len = 0;
-	while (1)
 	{
-		r = read(fd, buf, 1);
-		if (r < 0)
-		{
-			if (len == 0)
-				return (NULL);
-			break ;
-		}
-		dest = str_push_back(dest, *buf, len);
-		if (!dest)
-			return (NULL);
-		if (*buf == '\n')
-			break ;
-		len++;
+		free(str);
+		return (NULL);
 	}
-	return (dest);
+	dest[len + 1] = '\0';
+	i = 0
+	while (i < len)
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = c;
+	free(str);
+	return (dest)
 }
