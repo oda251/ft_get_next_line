@@ -24,7 +24,7 @@ char	*str_push_back(char *str, char c, size_t len)
 		return (NULL);
 	}
 	dest[len + 1] = '\0';
-	i = 0
+	i = 0;
 	while (i < len)
 	{
 		dest[i] = str[i];
@@ -32,5 +32,5 @@ char	*str_push_back(char *str, char c, size_t len)
 	}
 	dest[i] = c;
 	free(str);
-	return (dest)
+	return (dest);
 }

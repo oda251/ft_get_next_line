@@ -21,7 +21,8 @@ char	*get_next_line(int fd)
 	size_t	len;
 	int		r;
 
-	dest = ft_calloc(1, 1);
+	dest = malloc(1);
+	*dest = '\0';
 	if (!dest)
 		return (NULL);
 	len = 0;
@@ -34,6 +35,7 @@ char	*get_next_line(int fd)
 				return (NULL);
 			break ;
 		}
+		printf("%c", *buf);
 		dest = str_push_back(dest, *buf, len);
 		if (!dest)
 			return (NULL);
