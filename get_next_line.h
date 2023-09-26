@@ -12,13 +12,14 @@
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdint.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+# define FT_OPEN_MAX OPEN_MAX - _SC_OPEN_MAX
 
 int		initialize_get_next_line(int fd, char **dst, char **buf, char **r_log);
 char	*get_next_line(int fd);

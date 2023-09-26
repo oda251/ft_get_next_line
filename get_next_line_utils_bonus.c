@@ -51,7 +51,7 @@ int	search_line_break(char *buf, size_t r)
 
 int	initialize_get_next_line(int fd, char **dest, char **buf, char **read_log)
 {
-	if (fd < 0 || fd >= FOPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= FT_OPEN_MAX || BUFFER_SIZE <= 0)
 		return (0);
 	*dest = malloc(1);
 	if (!*dest)
