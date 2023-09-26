@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:04:31 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/25 21:58:32 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/26 22:41:40 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*realloc_cat(char **str, char *src, size_t len_str, size_t n)
 	return (dest);
 }
 
-static int	search_line_break(char *buf, size_t r)
+int	search_line_break(char *buf, size_t r)
 {
 	size_t	i;
 
@@ -107,14 +107,14 @@ int	cat_to_line_break(char **dest, char *src, char *log, size_t r)
 
 void	solve_get_next_line(int fd, char **dest, char *buf, char *read_log)
 {
-	size_t	r;
+	ssize_t	r;
 	int		line_break_detected;
 
 	line_break_detected = 0;
 	while (!line_break_detected)
 	{
 		r = read(fd, buf, BUFFER_SIZE);
-		if (r < 0)
+		if (r == -1)
 		{
 			free(*dest);
 			*dest = NULL;

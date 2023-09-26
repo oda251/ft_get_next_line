@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:07 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/25 21:58:46 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/26 23:03:25 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,45 +25,25 @@ char	*get_next_line(int fd)
 		free(buf);
 		return (NULL);
 	}
+	if (search_line_break(dest, BUFFER_SIZE))
+	{
+		free(buf);
+		return (dest);
+	}
 	solve_get_next_line(fd, &dest, buf, read_log[fd]);
 	free(buf);
 	if (!dest)
 	{
 		free(read_log[fd]);
+		read_log[fd] = NULL;
 		return (NULL);
 	}
 	if (!*dest)
 	{
 		free(dest);
 		free(read_log[fd]);
+		read_log[fd] = NULL;
 		return (NULL);
 	}
 	return (dest);
 }
-
-//#include <fcntl.h>
-//int main()
-//{
-//	char *line;
-//	char *line2;
-//	char *line3;
-//	int fd = open("test.txt", O_RDONLY);
-//	int fd2 = open("test2.txt", O_RDONLY);
-//	int fd3 = open("test3.txt", O_RDONLY);
-//	while (1)
-//	{
-//		line = get_next_line(fd);
-//		line2 = get_next_line(fd2);
-//		line3 = get_next_line(fd3);
-//		if (!line)
-//			break;
-//		printf("%s", line);
-//		printf("%s", line2);
-//		printf("%s", line3);
-//		free(line);
-//		free(line2);
-//		free(line3);
-//	}
-//	close(fd);
-//	return (0);
-//}
