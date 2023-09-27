@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:04:31 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/26 22:41:40 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/28 03:02:33 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	initialize_get_next_line(int fd, char **dest, char **buf, char **read_log)
 			free(*buf);
 			return (0);
 		}
-		**read_log = '\0';
+		**read_log = EOF;
 	}
 	return (1);
 }
@@ -87,7 +87,7 @@ int	cat_to_line_break(char **dest, char *src, char *log, size_t r)
 	while ((*dest)[len_dest])
 		len_dest++;
 	i = 0;
-	while (i < r && src[i])
+	while (i < r && src[i] != EOF)
 	{
 		if (src[i++] == '\n')
 			break ;
@@ -99,9 +99,9 @@ int	cat_to_line_break(char **dest, char *src, char *log, size_t r)
 		return (0);
 	}
 	tmp = i--;
-	while (++i < r && src[i])
+	while (++i < r && src[i] != EOF)
 		log[i - tmp] = src[i];
-	log[i - tmp] = '\0';
+	log[i - tmp] = EOF;
 	return (1);
 }
 

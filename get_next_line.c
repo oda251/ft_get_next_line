@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:07 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/26 23:03:25 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/28 03:01:16 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*read_log[FOPEN_MAX] = {NULL};
+	static char	*read_log[FT_OPEN_MAX] = {NULL};
 	char		*dest;
 	char		*buf;
 
