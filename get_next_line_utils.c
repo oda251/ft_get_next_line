@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:04:31 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/28 22:51:28 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/28 22:59:01 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int	cat_to_line_break(char **dest, char *src, char *log, size_t r)
 	if (!*dest)
 	{
 		free(*dest);
+		*dest = NULL;
 		return (0);
 	}
 	tmp = i--;

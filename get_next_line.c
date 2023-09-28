@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:07 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/28 22:53:18 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/28 22:59:57 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@ char	*get_next_line(int fd)
 
 	if (!initialize_get_next_line(fd, &dest, &buf, &read_log[fd]))
 		return (NULL);
-	if (!cat_to_line_break(&dest, read_log[fd], read_log[fd], BUFFER_SIZE))
+	if (!cat_to_line_break(&dest, read_log[fd], read_log[fd], BUFFER_SIZE)
+		|| search_line_break(dest, BUFFER_SIZE))
 	{
 		free(buf);
 		return (NULL);
-	}
-	if (search_line_break(dest, BUFFER_SIZE))
-	{
-		free(buf);
-		return (dest);
 	}
 	solve_get_next_line(fd, &dest, buf, read_log[fd]);
 	free(buf);

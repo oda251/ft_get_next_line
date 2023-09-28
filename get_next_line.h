@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:33 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/28 22:10:38 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/28 22:55:10 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <stdint.h>
 # include <limits.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
