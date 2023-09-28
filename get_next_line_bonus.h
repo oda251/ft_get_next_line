@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:33 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/29 04:17:55 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/29 05:43:24 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ typedef struct s_gnl
 	char		*str;
 	size_t		len;
 }	t_gnl;
-int		initialize_gnl(int fd, t_gnl *dst, char **buf, char **read_log);
+int		initialize_gnl(int fd, t_gnl *dst, char **buf, t_gnl *log);
 char	*get_next_line(int fd);
-int		cat_to_line_break(t_gnl *dest, char *src, char *log, size_t r);
-void	solve_get_next_line(int fd, t_gnl *dest, char *buf, char *read_log);
+int		cat_to_line_break(t_gnl *dest, char *src, t_gnl *log, size_t r);
+void	solve_get_next_line(int fd, t_gnl *dest, char *buf, t_gnl *log);
 int		search_line_break(char *buf, size_t r);
 
 #endif

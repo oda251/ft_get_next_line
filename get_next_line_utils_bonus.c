@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:04:31 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/29 05:09:33 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/29 05:46:03 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 static char	*realloc_cat(t_gnl *dest, char *src, size_t len_dst, size_t n)
 {
@@ -50,7 +50,7 @@ int	search_line_break(char *str, size_t r)
 	return (0);
 }
 
-int	initialize_gnl(int fd, t_gnl *dest, char **buf, char **read_log)
+int	initialize_gnl(int fd, t_gnl *dest, char **buf, t_gnl *log)
 {
 	if (fd < 0 || OPEN_MAX - _SC_OPEN_MAX <= fd || BUFFER_SIZE <= 0)
 		return (0);
@@ -64,27 +64,27 @@ int	initialize_gnl(int fd, t_gnl *dest, char **buf, char **read_log)
 		free(dest->str);
 		return (0);
 	}
-	if (!*read_log)
+	if (!log->str)
 	{
-		*read_log = malloc(BUFFER_SIZE);
-		if (!*read_log)
+		log->str = malloc(BUFFER_SIZE);
+		if (!log->str)
 		{
 			free(dest->str);
 			free(*buf);
 			return (0);
 		}
-		**read_log = EOF;
+		log->len = 0;
 	}
 	return (1);
 }
 
-int	cat_to_line_break(t_gnl *dest, char *src, char *log, size_t r)
+int	cat_to_line_break(t_gnl *dest, char *src, t_gnl *log, size_t r)
 {
 	size_t	i;
 	size_t	tmp;
 
 	i = 0;
-	while (i < r && src[i] != EOF)
+	while (i < r)
 	{
 		if (src[i++] == '\n')
 			break ;
@@ -98,15 +98,13 @@ int	cat_to_line_break(t_gnl *dest, char *src, char *log, size_t r)
 		return (0);
 	}
 	tmp = i--;
-	while (++i < r && src[i] != EOF)
-	{
-		log[i - tmp] = src[i];
-	}
-	log[i - tmp] = EOF;
+	while (++i < r)
+		log->str[i - tmp] = src[i];
+	log->len = i - tmp;
 	return (1);
 }
 
-void	solve_get_next_line(int fd, t_gnl *dest, char *buf, char *read_log)
+void	solve_get_next_line(int fd, t_gnl *dest, char *buf, t_gnl *log)
 {
 	ssize_t	r;
 	int		line_break_detected;
@@ -124,6 +122,6 @@ void	solve_get_next_line(int fd, t_gnl *dest, char *buf, char *read_log)
 		else if (r == 0)
 			break ;
 		line_break_detected = search_line_break(buf, r);
-		cat_to_line_break(dest, buf, read_log, r);
+		cat_to_line_break(dest, buf, log, r);
 	}
 }
