@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:07 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/29 04:14:28 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/29 04:18:59 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
@@ -38,26 +38,3 @@ char	*get_next_line(int fd)
 	}
 	return (dest.str);
 }
-
-#include <fcntl.h>
-int main()
-{
-	char *line;
-	int fd;
-
-	fd = open("test.txt", O_RDONLY);
-	while	(line = get_next_line(fd))
-	{
-		for(int i=0; i<6; i++)
-		{
-			if (0x20 <= line[i] && line[i] <= 0x7e)
-				printf("%c", line[i]);
-			else
-				printf("[%d]", line[i]);
-		}
-		free(line);
-	}	
-	close(fd);
-	return (0);
-}
-// echo -n -e '\x001234' >> test.txt
