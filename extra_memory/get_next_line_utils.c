@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:04:31 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/29 08:22:41 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/29 08:52:11 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	solve_get_next_line(int fd, t_gnl *dest, char *buf, t_gnl *log)
 			break ;
 		if (!cat_to_line_break(dest, buf, log, r))
 			return ;
-		if (dest->str[dest->len - 1] == '\n')
+		if (dest->len > 0 && dest->str[dest->len - 1] == '\n')
 			line_break_detected = 1;
 	}
 }
