@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:33 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/26 22:44:17 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/28 22:10:38 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdint.h>
+# include <limits.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
-# define FT_OPEN_MAX OPEN_MAX - _SC_OPEN_MAX
 
 int		initialize_get_next_line(int fd, char **dst, char **buf, char **r_log);
 char	*get_next_line(int fd);

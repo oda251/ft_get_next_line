@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 19:04:31 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/28 03:02:33 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/28 22:13:35 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	search_line_break(char *buf, size_t r)
 
 int	initialize_get_next_line(int fd, char **dest, char **buf, char **read_log)
 {
-	if (fd < 0 || fd >= FT_OPEN_MAX || BUFFER_SIZE <= 0)
+	if (BUFFER_SIZE <= 0)
 		return (0);
 	*dest = malloc(1);
 	if (!*dest)
