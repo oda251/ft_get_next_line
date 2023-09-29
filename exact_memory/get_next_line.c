@@ -6,7 +6,7 @@
 /*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:07 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/29 05:45:29 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/29 10:12:29 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static t_gnl	logs[OPEN_MAX - _SC_OPEN_MAX];
+	static t_gnl	logs[OPEN_MAX - _SC_OPEN_MAX] = {NULL};
 	t_gnl			dest;
 	char			*buf;
 
