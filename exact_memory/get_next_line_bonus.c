@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:07 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/29 10:12:24 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/30 18:23:37 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static t_gnl	logs[OPEN_MAX - _SC_OPEN_MAX] = {NULL};
+	static t_gnl	logs[OPEN_MAX - _SC_OPEN_MAX] = {{0}};
 	t_gnl			dest;
 	char			*buf;
 

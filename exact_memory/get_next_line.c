@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoda <yoda@student.42tokyo.jp>             +#+  +:+       +#+        */
+/*   By: yoda <yoda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 18:54:07 by yoda              #+#    #+#             */
-/*   Updated: 2023/09/29 10:12:29 by yoda             ###   ########.fr       */
+/*   Updated: 2023/09/30 18:17:00 by yoda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static t_gnl	logs[OPEN_MAX - _SC_OPEN_MAX] = {NULL};
+	static t_gnl	logs[OPEN_MAX - _SC_OPEN_MAX] = {{0}};
 	t_gnl			dest;
 	char			*buf;
 
@@ -47,7 +47,7 @@ char	*get_next_line(int fd)
 // 	char *line;
 // 	int fd;
 // 	fd = open("test.txt", O_RDONLY);
-// 	while	(line = get_next_line(fd))
+// 	if	(line = get_next_line(fd))
 // 	{
 // 		printf("%s", line);
 // 		free(line);
